@@ -26,6 +26,8 @@ function App() {
         <Link to="/form-status">FormStatus</Link>
         <Link to="/transition">Transition</Link>
         <Link to="/optimistic">Optimistic</Link>
+        <Link to="/context">Context</Link>
+        <Link to="/fetch">Fetch</Link>
       </div>
 
       <div className="border rounded p-4">

@@ -28,14 +28,14 @@ const FormState = () => {
 
   return <>
     <h3>useFormState() example </h3>
-    <h4 className="text-red-500"><strong>&#9432;</strong> renamed to <b>useActionState()</b></h4>
+    <h4 className="text-red-500"><b className="text-lg">&#9432;</b> renamed to <b>useActionState()</b></h4>
 
     <form action={formAction}>
       <div className=" flex gap-2 my-2">
         <label>Name</label>
         <input className=" border rounded px-1" type=" text" name=" username" autoComplete=" off"/>
       </div>
-      <button className=" rounded bg-amber-300 py-1 px-2">{pending ? 'Loading' : 'Submit'}</button>
+      <button className="rounded bg-amber-300 py-1 px-2">{pending ? 'Loading' : 'Submit'}</button>
       {message && <h4>{message.text}</h4>}
     </form>
   </>

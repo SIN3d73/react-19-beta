@@ -8,6 +8,8 @@ import FormStatus from './views/form-status.tsx';
 import Optimistic from './views/optimistic.tsx';
 import Links from './views/links.tsx';
 import Transition from './views/transition.tsx';
+import Context from './views/context.tsx';
+import Fetch from './views/fetch.tsx';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,8 @@ const router = createBrowserRouter([
       {path: `/form-status`, element: <FormStatus/>},
       {path: `/transition`, element: <Transition/>},
       {path: `/optimistic`, element: <Optimistic/>},
+      {path: `/context`, element: <Context/>},
+      {path: `/fetch`, element: <Fetch/>},
     ],
   },
 ]);
