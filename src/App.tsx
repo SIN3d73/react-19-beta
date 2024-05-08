@@ -24,6 +24,7 @@ function App() {
         <Link to="/">Some links</Link>
         <Link to="/form-state">FormState</Link>
         <Link to="/form-status">FormStatus</Link>
+        <Link to="/transition">Transition</Link>
         <Link to="/optimistic">Optimistic</Link>
       </div>
 

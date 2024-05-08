@@ -7,6 +7,7 @@ import FormState from './views/form-state.tsx';
 import FormStatus from './views/form-status.tsx';
 import Optimistic from './views/optimistic.tsx';
 import Links from './views/links.tsx';
+import Transition from './views/transition.tsx';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       {index: true, element: <Links/>},
       {path: `/form-state`, element: <FormState/>},
       {path: `/form-status`, element: <FormStatus/>},
+      {path: `/transition`, element: <Transition/>},
       {path: `/optimistic`, element: <Optimistic/>},
     ],
   },

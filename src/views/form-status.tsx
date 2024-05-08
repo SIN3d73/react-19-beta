@@ -17,7 +17,6 @@ const Info = () => {
 };
 
 const formAction = async () => {
-  // Simulate a delay of 2 seconds
   await new Promise((resolve) => setTimeout(resolve, 3000));
 }
 
