@@ -23,11 +23,24 @@ const formAction = async () => {
 const FormStatus = () => {
   return (
     <>
-      <h3>useFormStatus() example</h3>
+      <title>useFormStatus()</title>
+      <a
+        className="underline text-blue-600"
+        href="https://react.dev/reference/react-dom/hooks/useFormStatus"
+        target="_blank"
+      >
+        useFormStatus()
+      </a>
+
       <form action={formAction}>
         <div className="flex items-center gap-2 my-2">
           <label>Name starts with "J"</label>
-          <input className="border rounded px-1" type="text" name="username" autoComplete="off"/>
+          <input
+            className="border rounded px-1"
+            type="text"
+            name="username"
+            autoComplete="off"
+          />
           <Info/>
         </div>
         <Submit/>

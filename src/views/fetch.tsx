@@ -1,4 +1,4 @@
-import { Suspense, use, useState } from 'react';
+import { Suspense, use, useMemo, useState } from 'react';
 import axios from 'axios';
 import { ErrorBoundary } from 'react-error-boundary';
 
@@ -14,8 +14,8 @@ const fetchPosts = async (id = 0) => {
   return data
 };
 
-const TodoItems = ({id}: { id: number }) => {
-  const todo = use(fetchPosts(id));
+const TodoItems = ({promise}: { promise: Promise<TodoItem> }) => {
+  const todo = use(promise);
 
   return (
     <ul>
@@ -29,10 +29,19 @@ const TodoItems = ({id}: { id: number }) => {
 
 const Fetch = () => {
   const [count, setCount] = useState(1);
+  const promise = useMemo(() => fetchPosts(count), [count])
+
   return (
     <>
-      <h3>use(promise) example</h3>
-      <div className="flex gap-2">
+      <title>use(promise)</title>
+      <a
+        className="underline text-blue-600"
+        href="https://react.dev/reference/react/use#streaming-data-from-server-to-client"
+        target="_blank"
+      >
+        use(promise)
+      </a>
+      <div className="flex gap-2 my-2">
         {count}
         <button className="rounded bg-green-200 size-6" onClick={() => setCount((s) => s + 1)}>+</button>
         <button className="rounded bg-red-200 size-6" onClick={() => setCount((s) => s - 1)}>-</button>
@@ -40,7 +49,7 @@ const Fetch = () => {
 
       <ErrorBoundary fallback={<span>error!</span>}>
         <Suspense fallback="loading...">
-          <TodoItems id={count}/>
+          <TodoItems promise={promise}/>
         </Suspense>
       </ErrorBoundary>
     </>

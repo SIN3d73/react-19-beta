@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 
 function App() {
   // const [count, setCount] = useState(1);
@@ -21,13 +21,13 @@ function App() {
       </h1>
 
       <div className="flex gap-6 underline text-blue-600 mb-4">
-        <Link to="/">Some links</Link>
-        <Link to="/form-state">FormState</Link>
-        <Link to="/form-status">FormStatus</Link>
-        <Link to="/transition">Transition</Link>
-        <Link to="/optimistic">Optimistic</Link>
-        <Link to="/context">Context</Link>
-        <Link to="/fetch">Fetch</Link>
+        <NavLink className={({isActive}) => isActive ? "bg-blue-100 p-1 rounded" : "p-1"} to="/">Some links</NavLink>
+        <NavLink className={({isActive}) => isActive ? "bg-blue-100 p-1 rounded" : "p-1"} to="/form-state">FormState</NavLink>
+        <NavLink className={({isActive}) => isActive ? "bg-blue-100 p-1 rounded" : "p-1"} to="/form-status">FormStatus</NavLink>
+        <NavLink className={({isActive}) => isActive ? "bg-blue-100 p-1 rounded" : "p-1"} to="/transition">Transition</NavLink>
+        <NavLink className={({isActive}) => isActive ? "bg-blue-100 p-1 rounded" : "p-1"} to="/optimistic">Optimistic</NavLink>
+        <NavLink className={({isActive}) => isActive ? "bg-blue-100 p-1 rounded" : "p-1"} to="/context">Context</NavLink>
+        <NavLink className={({isActive}) => isActive ? "bg-blue-100 p-1 rounded" : "p-1"} to="/fetch">Fetch</NavLink>
       </div>
 
       <div className="border rounded p-4">

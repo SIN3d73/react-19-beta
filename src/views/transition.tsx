@@ -39,7 +39,16 @@ const Transition = () => {
 
   return (
     <>
-      <h3>useOptimistic() example</h3>
+      <title>useOptimistic()</title>
+      <a
+        className="underline text-blue-600"
+        href="https://react.dev/reference/react/useOptimistic"
+        target="_blank"
+      >
+        useOptimistic()
+      </a>
+      <p>added in v18</p>
+
       <div className="h-4 ms-12">{pending && 'loading...'}</div>
       {Array.from(worklog.entries()).map(([key, value]) => (
         <div key={key} className="flex gap-2 my-2">

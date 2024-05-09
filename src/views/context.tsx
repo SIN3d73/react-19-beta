@@ -1,4 +1,4 @@
-import { createContext, ReactNode, use, useState } from 'react';
+import { createContext, ReactNode, Ref, use, useRef, useState } from 'react';
 
 type Theme = 'dark' | 'light';
 
@@ -33,31 +33,35 @@ const ThemeProvider = (
   };
 
   return (
-    <ThemeContext.Provider value={{theme, toggleTheme}}>
+    <ThemeContext value={{theme, toggleTheme}}>
       {children}
-    </ThemeContext.Provider>
+    </ThemeContext>
   );
 };
 
-const Card = () => {
+const Card = ({ref}: { ref: Ref<HTMLDivElement> }) => {
+  // hard to find info about just use()
   const {theme, toggleTheme} = use(ThemeContext);
 
   return (
     <div
+      ref={ref}
       className={`max-w-md mx-auto rounded-lg p-6 ${
         theme === 'light' ? 'bg-gray-100' : 'bg-gray-800'
       }`}
     >
-      <h1
-        className={`text-2xl my-3 ${
-          theme === 'light' ? 'text-gray-800' : 'text-white'
-        }`}
-      >
-        Theme Card
-      </h1>
-      <p className={theme === 'light' ? 'text-gray-800' : 'text-white'}>
-        use(context) example
-      </p>
+      <title>use(context)</title>
+      <div>
+        <a
+          className={`underline my-3 ${
+            theme === 'light' ? 'text-blue-800' : 'text-blue-200'
+          }`}
+          href="https://react.dev/reference/react/use#reading-context-with-use"
+          target="_blank"
+        >
+          use(context)
+        </a>
+      </div>
       <button
         onClick={toggleTheme}
         className='bg-blue-500 hover:bg-blue-600 text-white rounded-md mt-4 p-4'
@@ -69,10 +73,15 @@ const Card = () => {
 };
 
 const Context = () => {
+  const ref = useRef<HTMLDivElement>(null);
+
   return (
-    <ThemeProvider>
-      <Card/>
-    </ThemeProvider>
+    <>
+      {console.log(ref.current)}
+      <ThemeProvider>
+        <Card ref={ref}/>
+      </ThemeProvider>
+    </>
   );
 };
 
