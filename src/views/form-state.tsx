@@ -36,7 +36,9 @@ const FormState = () => {
       >
         useFormState()
       </a>
-      <p className="text-red-500"><b className="text-lg">&#9432;</b> renamed to <b>useActionState()</b></p>
+      <p className="text-red-500">
+        <b className="text-lg">&#9432;</b> renamed to <b>useActionState()</b>
+      </p>
 
       <form action={formAction}>
         <div className=" flex gap-2 my-2">

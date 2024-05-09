@@ -42,10 +42,10 @@ const Transition = () => {
       <title>useOptimistic()</title>
       <a
         className="underline text-blue-600"
-        href="https://react.dev/reference/react/useOptimistic"
+        href="https://react.dev/reference/react/useTransition"
         target="_blank"
       >
-        useOptimistic()
+        useTransition()
       </a>
       <p>added in v18</p>
 

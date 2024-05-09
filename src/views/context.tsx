@@ -1,4 +1,14 @@
-import { createContext, ReactNode, Ref, use, useRef, useState } from 'react';
+import { createContext, ReactNode, RefObject, use, useRef, useState, useSyncExternalStore } from 'react';
+
+const useWidth = (ref: RefObject<HTMLElement | null>) => useSyncExternalStore(
+  (callback) => {
+    window.addEventListener("resize", callback)
+    return () => {
+      window.removeEventListener("resize", callback)
+    }
+  },
+  () => ref?.current?.offsetWidth ?? 0
+);
 
 type Theme = 'dark' | 'light';
 
@@ -19,13 +29,7 @@ const initialState: ThemeProviderState = {
 
 const ThemeContext = createContext<ThemeProviderState>(initialState);
 
-const ThemeProvider = (
-  {
-    children,
-    defaultTheme = 'light',
-  }: ThemeProviderProps
-) => {
-
+const ThemeProvider = ({children, defaultTheme = 'light'}: ThemeProviderProps) => {
   const [theme, setTheme] = useState(defaultTheme);
 
   const toggleTheme = () => {
@@ -39,7 +43,7 @@ const ThemeProvider = (
   );
 };
 
-const Card = ({ref}: { ref: Ref<HTMLDivElement> }) => {
+const Card = ({ref}: { ref: RefObject<HTMLDivElement | null> }) => {
   // hard to find info about just use()
   const {theme, toggleTheme} = use(ThemeContext);
 
@@ -74,13 +78,13 @@ const Card = ({ref}: { ref: Ref<HTMLDivElement> }) => {
 
 const Context = () => {
   const ref = useRef<HTMLDivElement>(null);
-
+  const width = useWidth(ref)
   return (
     <>
-      {console.log(ref.current)}
       <ThemeProvider>
         <Card ref={ref}/>
       </ThemeProvider>
+      Card component width: {width}
     </>
   );
 };
