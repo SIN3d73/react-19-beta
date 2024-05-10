@@ -42,7 +42,7 @@ const FormState = () => {
 
       <form action={formAction}>
         <div className=" flex gap-2 my-2">
-          <label>Name</label>
+          <label>Name starts with "J"</label>
           <input
             className="border rounded px-1"
             type="text"
