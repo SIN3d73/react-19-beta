@@ -21,7 +21,7 @@ const getNewMap = (state: Map<string, number>, key: string, hours: number) => {
 const Optimistic = () => {
   const [worklog, setWorklog] = useState(initialData);
 
-  const [pending, startTransaction] = useTransition();
+  const [pending, startTransition] = useTransition();
 
   const [optimisticWorklog, setOptimisticWorklog] = useOptimistic<Map<string, number>, ItemModel>(
     worklog,
@@ -29,7 +29,7 @@ const Optimistic = () => {
   );
 
   const onChange = (item: ItemModel) => {
-    startTransaction(async () => {
+    startTransition(async () => {
       try {
         setOptimisticWorklog(item);
         const newHours = await fakeDelayAction(item);

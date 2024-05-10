@@ -22,10 +22,10 @@ const getNewMap = (state: Map<string, number>, key: string, hours: number) => {
 const Transition = () => {
   const [worklog, setWorklog] = useState(initialData);
 
-  const [pending, startTransaction] = useTransition();
+  const [pending, startTransition] = useTransition();
 
   const onChange = (item: ItemModel) => {
-    startTransaction(async () => {
+    startTransition(async () => {
       try {
         const newHours = await fakeDelayAction(item);
         setWorklog((state) => getNewMap(state, item.key, newHours));

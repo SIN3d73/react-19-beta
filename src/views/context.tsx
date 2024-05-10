@@ -43,6 +43,7 @@ const ThemeProvider = ({children, defaultTheme = 'light'}: ThemeProviderProps) =
   );
 };
 
+// "ref" prop is a keyword
 const Card = ({ref}: { ref: RefObject<HTMLDivElement | null> }) => {
   // hard to find info about just use()
   const {theme, toggleTheme} = use(ThemeContext);
